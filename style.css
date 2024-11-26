@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    font-family: Arial, sans-serif;
+}
+nav{
+    position: fixed; 
+    width: 100%;  z-index: 100;
+    top: 0;
+    background-color: black;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white; 
+    text-decoration: none; 
+}
+
+body{
+    background-image:url(./images/stadium_background.webp) ;background-repeat:no-repeat; min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-size: 100% auto;
+    background-position: center top 70px;
+    background-repeat: no-repeat; 
+    
+    
+}
+
+
+.hero{
+    font-family: Poppins, sans-serif;
+    color: white;
+    padding-top: 80px;
+    background-color: #292f36d1;
+    z-index: -1;
+    
+    
+
+}
+.hero-container{
+    padding: 50px;
+    
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+.hero-container li{
+    display: inline;
+    margin: 0 15px;
+    font-size: small;
+    color: rgba(255, 255, 255, 0.326);
+
+}
+.hero-container a{
+    color: white; 
+    text-decoration: none; 
+    font-size: small;
+    color: rgba(255, 255, 255, 0.326);
+}
+.hero-container h1 {
+    font-size:large;
+    
+
+}
+.hero-container h2{
+    font-size:small;
+
+}
+
+
+.hero-contain{
+   display: flex;
+   flex-direction: column;
+    padding-left: 50px;
+    background: url(/images/télécharger.svg) no-repeat;
+    width: 900px;
+    color: white;
+    
+    
+}
+.cardid1{
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    aspect-ratio: 13/19;
+    height: 162px;
+    background: url(/images/placeholder-card-normal.webp) no-repeat;
+    background-position-x: center;
+    background-size: contain;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    color: white;
+}
+.cardid1:hover{
+    box-shadow: 20px 20px 50px #55CCA2 ;
+     
+}
+.card-attack{
+    color: rgba(255, 255, 255, 0.301);
+    font-size: x-small;
+}
+
+.card-1{
+    font-size:x-small;
+    font-weight: bold;
+}
+.card-st{
+    background: url(/images/pos_base.png) no-repeat;
+    height: 45px;
+    width: 80px;
+      
+     
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     
+}
+
+/* footer */
+footer{
+    background-color: #2B2A2A;
+   margin-top: 50px;
+}
+.footer-container{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#55CCA2;
+    height: 60px;
+}
+.footer-contain{
+    display: flex;
+    gap: 20px;
+   
+}
+.nav-footer{
+    padding-top: 30px;
+}
+.nav-footer ul li {
+    
+    margin: 0 15px;
+}
+.nav-footer ul li a{
+    text-decoration: none;
+    color: white;
+    
+    
+}
+
+.nav-footer ul li a:hover{
+    color: #55CCA2;
+}
+.footer-hr{
+    border: 1px solid #55CCA2;
+    width: 60px;
+}
+.footer-wraper{
+    background-color: #121212;
+     text-align: center; 
+     height: 70px; display: flex;
+     align-items: center;
+      justify-content: center;
+}
+.footer-wraperid{
+    height: 120px;
+    text-align: center; 
+    font-size: small;
+    color: rgba(128, 128, 128, 0.953);
+    font-weight: bold;
+}
+
+/* afficherplayer */
+
+

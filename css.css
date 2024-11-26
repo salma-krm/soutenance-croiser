@@ -1,0 +1,62 @@
+
+
+.formulaire{
+    background-color: rgb(70, 108, 70);
+    align-items: center;
+    padding: 10px;
+    box-shadow: 15px 25px 15px rgba(52, 50, 50, 0.87);
+    
+}
+.titre{
+    display: flex;
+    justify-content: center;
+    margin-bottom:30px;
+}
+.tous{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 20px;
+}
+.ajout-btn{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+#btn1{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(70, 79, 70);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+
+}
+#btn1:hover{
+    cursor: pointer;
+}
+.terrain .Gk {
+    filter:drop-shadow(15px 25px 15px rgba(222, 26, 26, 0.87));
+}
+.terrain .joeur1{
+    width: 100px;
+}
+input,select{
+    width: 300px;
+    height:50px;
+    border-radius: 10px;
+    border: none;
+
+}
+footer{
+    color: white;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgb(27, 24, 24);
+}

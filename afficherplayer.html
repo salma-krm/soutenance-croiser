@@ -32,43 +32,44 @@
         <div class="hero-contain" >
             <div class="d-flex justify-content-evenly align-items-center">
                 <div  class="d-flex flex-column justify-content-center align-items-center">
-                    <button class="cardid1" > 
+                    <a href="#players-container"><button class="cardid1" > 
                         <div class="card-1" >+</div>
                         
                       </button>
+                    </a>
                       <div  class="card-st">ST</div>
 
                 </div>
              
                   <div  class="d-flex flex-column justify-content-center align-items-center">
-                    <button class="cardid1" > 
+                    <a  href="#players-container"><button  class="cardid1" >
                         <div class="card-1">+</div>
-                       
                       </button>
+                    </a>
                       <div  class="card-st">ST</div>
                   </div>
                 
             </div>
             <div class="d-flex justify-content-evenly ">
                 <div class="d-flex flex-column justify-content-center align-items-center" >
-                    <button class="cardid1" > 
+                    <a href="#players-container"><button class="cardid1" > 
                         <div class="card-1" >+</div>
                        
-                      </button>
+                      </button></a>
                       <div  class="card-st">LM</div> 
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center" >
-                    <button class="cardid1" > 
+                    <a href="#players-container"><button class="cardid1" > 
                         <div class="card-1" >+</div>
                         
-                      </button>
+                      </button></a>
                       <div  class="card-st">CM</div> 
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center" >
-                    <button class="cardid1" > 
-                        <div  class="card-1" >+</div>
+                    <a   href="#players-container"></a><button class="cardid1" > 
+                        <div   class="card-1" >+</div>
                         
-                      </button>
+                      </button></a>
                       <div  class="card-st">CDM</div>   
                 </div>
                   <div class="d-flex flex-column justify-content-center align-items-center" >
@@ -84,7 +85,7 @@
                         <div class="card-1" >+</div>
                        
                       </button>
-                      <div  class="card-st">ST</div>
+                      <div  class="card-st">RM </div>
                  </div>
                  
             </div>
@@ -94,7 +95,7 @@
                         <div class="card-1" >+</div>
                      
                       </button>
-                      <div  class="card-st">RM</div>
+                      <div  class="card-st">CB</div>
                 </div>
               <div class="d-flex flex-column justify-content-center align-items-center" >
                 <button class="cardid1" > 
@@ -118,20 +119,46 @@
                 <div class="d-flex flex-column justify-content-center align-items-center" >
                     <button class="cardid1" > 
                         <div class="card-1" >+</div>
-                        
                       </button>
                       <div  class="card-st">GK</div> 
                 </div>   
             </div>
           
         </div>
-        <div class="formulaire">
+        <div id="formation-players">
+            <button class="button-add-player">Add player</button>
+            <div><h4>Formation</h4></div>
+            <select name="" class="liste">
+                <option  value="3-1-4-2">3-1-4-2</option>
+                <option value="4-4-2">4-4-2</option>
+            </select>
+            <hr>
+            <div><h4>Build Up Style</h4></div>
+            <select name="" class="liste">
+                <option value="Balanced">Balanced</option>
+                <option value="Counter">Counter</option>
+            </select>
+            <div><p >Players will vary between forward runs and coming short. The team's transition to their in-possession shape will be steady rather than sudden.</p></div>
+            <div><h4>Defensive Approach</h4></div>
+            <select name="" class="liste">
+                <option value="Balanced">Balanced</option>
+                <option value="Counter">Deep</option>
+            </select>
+            <div><p>This approach gives the defence flexibility on how deep they drop, and which runs they track.</p></div>
+
+            
+
+
+        </div>
+        <div id="formulaire-players" class="formulaire">
            
-            <div class="titre"><h2>Information des joeurs</h2></div>
+            <div class="titre"><h4>Information des joeurs</h4></div>
             <div class="tous">
-                <input type="text" required placeholder="   nom">
-                <input type="text" required placeholder="   nationalité">
-                <input type="text" required placeholder="   club">
+                <input id="player-nom" type="text" required placeholder=" nom">
+                <input id="player-photo" type="text" required placeholder=" URL de photo">
+                <input id="player-logo" type="text" required placeholder=" URL de logo">
+                <input id="player-nationalite" type="text" required placeholder="   nationalité">
+                <input id="player-club" type="text"required placeholder="   club">
 
             <select name="position" id="position">
                 <option value="ST">ST</option>
@@ -141,24 +168,27 @@
                 <option value="RB">RB</option>
                 <option value="LB">LB</option>
                 <option value="CB">CB</option>
-                <option value="GK">GK</option>
+                <option id="player-GK" value="GK">GK</option>
             </select>
-        
-                <input type="number" placeholder="  rating">
-           
-            <input type="number" placeholder="  pace">
- 
-            <input type="number" placeholder="  shooting">
+            <div  id="input-player" >
+            <div >
+            <input id="player-rating " type="text" placeholder="  rating">
+            <input id="player-pace" type="text" placeholder="  pace">
+            <input id="player-shooting" type="number" placeholder="  shooting">
             
-            <input type="number" placeholder="  passing">
+            <input id="player-passing" type="number" placeholder="  passing">
            
-            <input type="number" placeholder="  driblling">
+            <input id="player-driblling" type="number" placeholder="  driblling">
 
-            <input type="number" placeholder="  defending">
+            <input id="player-defending" type="number" placeholder="  defending">
      
-            <input type="number" placeholder="  physical">
+            <input id="player-physical" type="number" placeholder="  physical">
+            
+            </div>
+            </div>
+            
           
-            <select name="" id="liste1">
+            <select name="" class="liste1">
                 <option value="4-3-3">3-1-4-2</option>
                 <option value="4-4-2">4-4-2</option>
             </select>
@@ -166,14 +196,16 @@
             
             <div class="ajout-btn"><button id="btn1">AJOUTER</button></div>
     </div>
+    
 
     </div>
     </section>
-    <section id="players-container"  >
-        <div  class="players-contain" >
+    <section id="players-container" class="p-5"  >
+        
             
             
-        </div>
+        
+           
       
 
     </section>

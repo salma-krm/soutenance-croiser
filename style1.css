@@ -57,6 +57,9 @@
     
     
 }
+.hero-contain  a{
+    text-decoration: none;
+}
 .cardid1{
     border: none;
     
@@ -93,6 +96,9 @@
     border: solid 2px  #55CCA2 ;
     border-radius: 40%;
 }
+.player-card a{
+    text-decoration: none;
+}
 .card-st{
     background: url(/images/pos_base.png) no-repeat;
     height: 45px;
@@ -112,87 +118,127 @@
      background-color:  #2A2F34;
 }
 #players-container{
-    display: flex; 
+   
     flex-wrap: wrap;
-     width: 80%;
-     min-height: 50%;
+    display: none;
+    width: auto;
+    
+    
+    
      
 }
+
 .player-contain1{
     color: #FFD972;
-    background: url(./images/badge_ballon_dor.webp) no-repeat;
-    height: 400px;
-    width: 240px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    font-size: small;
+    font-weight: bolder;
+    background: url(./images/placeholder-card-normal.webp) no-repeat;
+    width: 172px;
+    height: 253px;
+    text-align: center;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
 }
 
+.player-info{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 150px;
+    top: 12%;
+    right: 7%;
+}
+
+
+
+/* formation */
+
+.button-add-player{
+    width: 300px;
+    height: 50px;
+    background-color: #55CCA2;
+    border-radius: 10px;
+    border: #55CCA2 solid 2px;
+}
+#formation-players{
+    width: 340px;
+    height: 600px;
+    padding: 20px;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+}
+#formation-players p{
+    font-size: small;
+}
+.liste{
+    background-color: #2A2F34;
+    color: white;
+    border: #55CCA2 solid 2px;
+}
 
 /* formulaire */
 
 
 .formulaire{
     
+    display: none;
     align-items: center;
-    padding-right: 10px;
     
-    height: 600px;
     
     
 }
+#input-player input{
+    height: 30px;
+
+}
+#input-player div {
+    display: flex; 
+    flex-direction: column;
+    gap: 5px;
+
+}
+
 .titre{
-    display: flex;
-    justify-content: center;
+    
+    text-align: center;
     margin-bottom:30px;
+    font-size:xx-small;
+    padding-left: 30px;
 }
 .tous{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+   display: flex;
+   flex-direction: column;
+   width: 100px;
+   height: 600px;
     gap: 20px;
 }
+
 .ajout-btn{
     display: flex;
     justify-content: center;
     padding-top: 20px;
 }
 #btn1{
-    width: 200px;
-    height: 50px;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
     border-radius: 10px;
-    background-color: rgb(70, 79, 70);
+    background-color: #55CCA2;
     border: none;
     color: white;
-    font-size: 1.2rem;
+    
+    text-align: center;
 
 }
-#btn1:hover{
-    cursor: pointer;
-}
-.terrain .Gk {
-    filter:drop-shadow(15px 25px 15px rgba(222, 26, 26, 0.87));
-}
-.terrain .joeur1{
-    width: 100px;
-}
+
 input,select{
     width: 300px;
     height:50px;
     border-radius: 10px;
     border: none;
 
-}
-footer{
-    color: white;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    background-color: rgb(27, 24, 24);
 }

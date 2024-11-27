@@ -21,7 +21,7 @@
     <nav  >
         <ul  class=" d-flex flex-row   gap-5 p-3  "  >
             <li><a href="./hero.html">Accueil</a></li>
-            <li><a href="./service.html">Players</a></li>
+            <li><a href="./afficherplayer.html">Players</a></li>
         </ul>
     </nav>
     <!-- Hero Section -->
@@ -129,6 +129,7 @@
           
         </div>
         
+        
    <footer>
     <div class="footer-container" >
        <div >Contact us on social networks!</div>
@@ -187,3 +188,70 @@
 </body>
  
 </html>
+
+
+const playernom=document.getElementById("player-nom");
+const playernationalite=document.getElementById("player-nationalite");
+const playerpace=document.getElementById("player-pace");
+const playershooting=document.getElementById("player-shooting");
+const playerpassing=document.getElementById("player-passing");
+const playerdriblling=document.getElementById("player-driblling");
+const playerdefending=document.getElementById("player-defending");
+const playerphysical=document.getElementById("player-physical");
+const playerclub=document.getElementById("player-club");
+const playerrating=document.getElementById("player-rating");
+const playerphoto=document.getElementById("player-photo");
+const playerlogo=document.getElementById("player-logo");
+const ajoutbtn=document.querySelector(".ajout-btn");
+
+ajoutbtn.addEventListener('click',function(){
+   
+
+    //    {let newPlayer = {};
+        
+
+        
+    //      newPlayer.nom = playernom.value
+    //      newPlayer.nationality = playernationalite.value
+    //      newPlayer.pace = playerpace.value
+    //      newPlayer.physical = playerphysical.value
+    //      newPlayer.club = playerclub.value
+    //      newPlayer.dribbling = playerdriblling.value
+    //      newPlayer.defending = playerdefending.value
+    //      newPlayer.passing = playerpassing.value
+    //      newPlayer.shooting = playershooting.value
+    //      newPlayer.rating = playerrating.value
+    //      newPlayer.photo = playerphoto.value
+    //      newPlayer.logo = playerlogo.value
+
+        data.players.unshift(newPlayer)
+        afficherData(data)
+        
+      
+
+       
+});
+ajoutbtn.addEventListener('click',function(){
+   
+    let newPlayer = 
+     {name: "Gianluigi Donnarumma",
+    photo: "https://cdn.sofifa.net/players/230/621/25_120.png",
+    position: "GK",
+    nationality: "Italy",
+    flag: "https://cdn.sofifa.net/flags/it.png",
+    club: "Paris Saint-Germain",
+    logo: "https://cdn.sofifa.net/meta/team/591/120.png",
+    rating: 89,
+    diving: 88,
+    handling: 84,
+    kicking: 75,
+    reflexes: 90,
+    speed: 50,
+    positioning: 85}
+   
+    data.players.unshift(newPlayer)
+    afficherData(data)
+
+
+
+})

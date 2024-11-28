@@ -21,16 +21,16 @@ function afficherData(data) {
                 <div class="d-flex flex-">
                 <div >
                 <p>`+ player.position + `</p>
-                <h5>`+ player.rating + `</h5>
+                <h6>`+ player.rating + `</h6>
                 </div>
                 <img  style="width: 70px;" src="`+ player.photo + `" alt="">
                 </div>
-              <h6> `+ player.name + `</h6>
+              <p> `+ player.name + `</p>
               `
         if (player.position == "GK") {
             html += `  <div>
                 
-                <span>`+ player.rating + `</span>
+                
                 <span>`+ player.diving + `</span>
                 <span>`+ player.handling + `</span>
                 <span>`+ player.kicking + `</span>
@@ -58,13 +58,9 @@ function afficherData(data) {
               <div style="padding-bottom: 30px;">
               <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">
               <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.logo + `" alt="">
-              </div>
-            
-       
-        
-           
-     </div>
-    </div>
+              </div>       
+           </div>
+        </div>
     </div>
     `
 
@@ -88,7 +84,8 @@ const pos = document.getElementById("position");
 pos.addEventListener('change', (event) => {
     if (event.target.value === 'GK') {
         inputplay.innerHTML = `<div  style="display: flex; flex-direction: column;gap: 5px; " >
-                     <input type="number" placeholder=" rating ">
+
+                    
                    
                     <input type="number" placeholder="  diving">
          
@@ -121,29 +118,9 @@ pos.addEventListener('change', (event) => {
             </div> `
     }
 });
-// const playerGK =document.getElementById("player-GK");
+
 const inputplay = document.getElementById("input-player");
-// playerGK.addEventListener('click',function(){
-//    {
-//     inputplay.innerHTML=`<div  style="display: flex; flex-direction: column;gap: 5px; " >
-//              <input type="number" placeholder="  salma">
 
-//             <input type="number" placeholder="  pace">
-
-//             <input type="number" placeholder="  shooting">
-
-//             <input type="number" placeholder="  passing">
-
-//             <input type="number" placeholder="  driblling">
-
-//             <input type="number" placeholder="  defending">
-
-//             <input type="number" placeholder="  physical">
-//             </div> `
-
-//    }
-
-// })
 const playernom = document.getElementById("player-nom");
 const playernationalite = document.getElementById("player-nationalite");
 const playerpace = document.getElementById("player-pace");
@@ -153,61 +130,102 @@ const playerdriblling = document.getElementById("player-driblling");
 const playerdefending = document.getElementById("player-defending");
 const playerphysical = document.getElementById("player-physical");
 const playerclub = document.getElementById("player-club");
-const playerrating = document.getElementById("player-rating");
+const playerrating = document.getElementById("rates");
 const playerphoto = document.getElementById("player-photo");
 const playerlogo = document.getElementById("player-logo");
+const playerflag = document.getElementById("player-flag");
 const ajoutbtn = document.querySelector(".ajout-btn");
+
 
 
 ajoutbtn.addEventListener('click', function () {
 
     let newPlayer = {};
+    const name = playernom.value.trim();
+    const pace = playerpace.value.trim();
+    const rating = playerrating.value.trim();
+    const photo = playerphoto.value.trim();
+    const physical = playerphysical.value.trim();
+    const club = playerclub.value.trim();
+    const logo = playerlogo.value.trim();
+    const flag = playerflag.value.trim();
+    const passing = playerpassing.value.trim();
+    const shooting = playershooting.value.trim();
+    const dribbling = playerdriblling.value.trim();
+    const defending = playerdefending.value.trim();
+    const nationality = playernationalite.value.trim();
+
+    let status = true;
+    let child;
+    if (name.length == 0) {
+        child = playernom.nextElementSibling;
+        child.style.display = "block"
+        child.style.color = "red"
+
+        playernom.style.border = 'solid 2px red';
+        status = false
+    }
+
+    if (nationality.length == 0) {
+        child =playernationalite.nextElementSibling;
+        child.style.display = "block"
+        child.style.color = "red"
+        playernationalite.style.border = 'solid 2px red';
+        status = false
+    }
+
+    if (photo.length == 0) {
+        playerphoto.nextElementSibling.style.display = "block"
+        playerphoto.nextElementSibling.style.color = "red"
+        playerphoto.style.border = 'solid 2px red';
+        status = false
+    }
 
 
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!nameRegex.test(name)) {
+        
+        playernom.nextElementSibling.style.display = "block"
+        playernom.nextElementSibling.style.color = "red"
+        playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
+        playernom.style.border = 'solid 2px red';
+        status = false
 
-    newPlayer.nom = playernom.value
+    }
+
+    if (name.length < 2 || name.length > 50) {
+        
+        status = false
+
+    }
+
+    console.log(playerrating.value)
+
+    newPlayer.name = playernom.value
+    console.log(playernom.value)
+    newPlayer.rating = playerrating.value
     newPlayer.nationality = playernationalite.value
     newPlayer.pace = playerpace.value
-    console.log(playerpace);
-    
     newPlayer.physical = playerphysical.value
     newPlayer.club = playerclub.value
     newPlayer.dribbling = playerdriblling.value
     newPlayer.defending = playerdefending.value
     newPlayer.passing = playerpassing.value
     newPlayer.shooting = playershooting.value
-    newPlayer.rating = playerrating.value
     newPlayer.photo = playerphoto.value
     newPlayer.logo = playerlogo.value
-    newPlayer.position= pos.value
-    console.log("ana hna");
+    newPlayer.flag = playerflag.value
+    newPlayer.position = pos.value
 
-    data.players.unshift(newPlayer)
-    afficherData(data)
-    console.log(data);
+
+    if (status) {
+        data.players.unshift(newPlayer)
+        afficherData(data)
+    }
 
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const card = document.getElementsByClassName("cardid1");
 const cards = Array.from(card)
 console.log(card)

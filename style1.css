@@ -119,11 +119,8 @@
      background-color:  #2A2F34;
 }
 #players-container{
-   
     flex-wrap: wrap;
     width: 100%;
-    display: none;
-       
 }
 
 .player-contain1{

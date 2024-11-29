@@ -1,7 +1,9 @@
 let conatiner = document.getElementById("container");
-var data = []
+var clickedCardPosition = null;
 
-async function filtrejson() {
+var data = [];
+
+async function getData() {
     try {
         const response = await fetch('data.json');
         data = await response.json();
@@ -10,14 +12,13 @@ async function filtrejson() {
         console.error("Error fetching json file", error);
     }
 }
-filtrejson();
-
+getData();
 
 function afficherData(data) {
     let html = "";
 
     data.players.forEach((player) => {
-        html += `<div class="siham" style="display: flex;flex-direction: column;
+        html += `<div class="palyerCard" position="${player.position}" style="display: flex;flex-direction: column;
     justify-self: center;
     align-items: center;"
      >
@@ -35,8 +36,6 @@ function afficherData(data) {
               `
         if (player.position == "GK") {
             html += `  <div>
-                
-                
                 <span>`+ player.diving + `</span>
                 <span>`+ player.handling + `</span>
                 <span>`+ player.kicking + `</span>
@@ -45,10 +44,8 @@ function afficherData(data) {
                 <span>`+ player.positioning + `</span>
                 
             </div>`
-
         } else {
             html += `  <div>
-                
                 <span>`+ player.pace + `</span>
                 <span>`+ player.shooting + `</span>
                 <span>`+ player.passing + `</span>
@@ -59,7 +56,6 @@ function afficherData(data) {
         }
 
         html += ` 
-          
               <p>`+ player.nationality + `</p> 
               <div style="padding-bottom: 30px;">
               <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">
@@ -68,18 +64,14 @@ function afficherData(data) {
            </div>
         </div>
     </div>
-     
-      <button class="salma">Add</button>
-      
     </div>
     
     `
 
-    });    
-    document.getElementById("players-container").innerHTML = html
-
-
-
+    });
+    document.getElementById("players-container").innerHTML = html;
+    addEventToCardPositionPlace();
+    addEventClickToCardWithValues();
 }
 
 
@@ -171,34 +163,68 @@ ajoutbtn.addEventListener('click', function () {
     const nationality = playernationalite.value.trim();
 
     let status = true;
-    let child;
-    if (name.length == 0) {
-        
-        playernom.nextElementSibling.style.display = "block"
-        playernom.nextElementSibling.style.color = "red"
-        playernom.style.border = 'solid 2px red';
-        status = false
+    let nameRegex = /^[a-zA-Z\s]+$/;
+    let numberRegex = /^[0-9]{2}$/;
+    let photoregex  = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
+    
+    if (name.length == 0 || !nameRegex.test(name) || name.length < 2 || name.length > 50) {
+        if (name.length == 0) {
+            playernom.nextElementSibling.style.display = "block"
+            playernom.nextElementSibling.style.color = "red"
+            playernom.style.border = 'solid 2px red';
+            status = false
+        }
+        else {
+            playernom.nextElementSibling.style.display = "block"
+            playernom.nextElementSibling.style.color = "red"
+            playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
+            playernom.style.border = 'solid 2px red';
+            status = false
+
+        }
     }
 
-    if (nationality.length == 0) {
-        child =playernationalite.nextElementSibling;
-        playernationalite.nextElementSibling.style.display = "block"
-        playernationalite.nextElementSibling.style.color = "red"
-        playernationalite.style.border = 'solid 2px red';
-        status = false
+  
+    if (nationality.length == 0|| !nameRegex.test(nationality) || nationality.length < 2 || nationality.length > 50) {
+        if(nationality.length == 0){
+            playernationalite.nextElementSibling.style.display = "block"
+            playernationalite.nextElementSibling.style.color = "red"
+            playernationalite.style.border = 'solid 2px red';
+            status = false
+
+        }
+        else{
+            playernationalite.nextElementSibling.style.display = "block"
+            playernationalite.nextElementSibling.style.color = "red"
+            playernationalite.nextElementSibling.textContent = "the value you enter not much the requerment"
+            playernationalite.style.border = 'solid 2px red';
+            status = false
+
+        }
     }
 
-    if (photo.length == 0) {
+    if (photo.length == 0 ||!photoregex.test(photo) )   {
         playerphoto.nextElementSibling.style.display = "block"
         playerphoto.nextElementSibling.style.color = "red"
         playerphoto.style.border = 'solid 2px red';
         status = false
     }
-    if (pace.length == 0) {
-        playerpace.nextElementSibling.style.display = "block"
-        playerpace.nextElementSibling.style.color = "red"
-        playerpace.style.border = 'solid 2px red';
-        status = false
+    if (pace.length == 0 || !numberRegex.test(pace)) {
+        if(pace.length == 0){
+            playerpace.nextElementSibling.style.display = "block"
+            playerpace.nextElementSibling.style.color = "red"
+            playerpace.style.border = 'solid 2px red';
+            status = false
+        }
+        else{
+            playerpace.nextElementSibling.style.display = "block"
+             playerpace.nextElementSibling.style.color = "red"
+            playerpace.nextElementSibling.textContent = "the value you enter not much the requerment"
+            playerpace.style.border = 'solid 2px red';
+            status = false
+
+        }
+
     }
     if (rating.length == 0) {
         playerrating.nextElementSibling.style.display = "block"
@@ -256,25 +282,25 @@ ajoutbtn.addEventListener('click', function () {
     }
 
 
-    const nameRegex = /^[a-zA-Z\s]+$/;
-    if (!nameRegex.test(name)) {
-        
-        playernom.nextElementSibling.style.display = "block"
-        playernom.nextElementSibling.style.color = "red"
-        playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
-        playernom.style.border = 'solid 2px red';
-        status = false
 
-    }
+    // if (!nameRegex.test(name)) {
 
-    if (name.length < 2 || name.length > 50) {
-        
-        status = false
+    //     playernom.nextElementSibling.style.display = "block"
+    //     playernom.nextElementSibling.style.color = "red"
+    //     playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
+    //     playernom.style.border = 'solid 2px red';
+    //     status = false
 
-    }
-    console.log(playerrating.value)
+    // }
+
+    // if (name.length < 2 || name.length > 50) {
+
+    //     status = false
+
+    // }
+    
     newPlayer.name = playernom.value
-    console.log(playernom.value)
+  
     newPlayer.rating = playerrating.value
     newPlayer.nationality = playernationalite.value
     newPlayer.pace = playerpace.value
@@ -295,85 +321,99 @@ ajoutbtn.addEventListener('click', function () {
 });
 
 
-const card = document.getElementsByClassName("cardid1");
-const cards = Array.from(card)
+
 const players = document.getElementById("players-container");
-cards.forEach(item => {
-    item.addEventListener('click', function () {
-        players.style.display = 'flex';
-    })
-});
 
 
+// addEventToPlayersCard();
+
+var selectedPosition;
+function addEventToPlayersCard() {
+    // const CardSt = document.querySelectorAll(".card-st");
 
 
- buttonsPlayers = document.querySelectorAll('#players-container');
- console.log(buttonsPlayers);
- 
+    // playersCards.forEach(function (playerCard) {
 
-const CardsContainer=document.getElementsByClassName("cards-container");
-const CardSt=document.getElementsByClassName("card-st");
-const playerposition=document.getElementsByClassName("player-position");
-  
+    //     playerCard.addEventListener('click', function () {
+    //         playerTargetContent = playerCard;
+    //         let position = playerCard.getAttribute("position");
+    //         CardSt.forEach(post => {
+    //             futureCard.innerHTML = playerCard.innerHTML;
+    //             if (position == post.innerText) {
+
+    //             }
 
 
-Array.from(buttons).forEach(function(el){
-    console.log(el);
+    //         });
+    //     });
+
+    // });
+
+    // players.style.display = "flex"
+    // const futureCard = document.getElementById("card-contain-id");
+    // Array.from(document.getElementsByClassName("cardid1")).forEach(function (e) {
+    //     e.addEventListener("click", function (e) {
+    //         selectedPosition = e.target.value
+    //         // console.log(e.target.value);
+    //     });
+    // });
+
     
-    
-    items.addEventListener('click',function(){
-        
-        if(playerposition.value==CardSt.value){
-            CardsContainer.textContent=` <div class="card-container" >
-                <div   class ="player-contain1">
-                <div class="player-info" >
-                    <div class="d-flex flex-">
-                    <div >
-                    <p class"player-position">`+ player.position + `</p>
-                    <h6>`+ player.rating + `</h6>
-                    </div>
-                    <img  style="width: 70px;" src="`+ player.photo + `" alt="">
-                    </div>
-                  <p> `+ player.name + `</p>
-                  `
-            if (player.position == "GK") {
-                html += `  <div>
-                    <span>`+ player.diving + `</span>
-                    <span>`+ player.handling + `</span>
-                    <span>`+ player.kicking + `</span>
-                    <span>`+ player.reflexes + `</span>
-                    <span>`+ player.speed + `</span>
-                    <span>`+ player.positioning + `</span>
+
+}
+
+// setTimeout(()=>{
+//     Array.from(document.getElementsByClassName("palyerCard")).forEach(function(e){
+//         e.addEventListener("click",function(e){
+             
+      
+//             if( selectedPosition != null && e.currentTarget.getAttribute("position") == selectedPosition ){
+//                 Array.from(document.getElementsByClassName("player_in_thelineUp")).forEach(function (c) {
                     
-                </div>`
-    
-            } else {
-                html += `  <div>
-                    
-                    <span>`+ player.pace + `</span>
-                    <span>`+ player.shooting + `</span>
-                    <span>`+ player.passing + `</span>
-                    <span>`+ player.dribbling + `</span>
-                    <span>`+ player.defending + `</span>
-                    <span>`+ player.physical + `</span>
-                </div>`
+//                         if(c.getAttribute("position")  === selectedPosition ){
+//                             c.innerHTML = e.currentTarget.innerHTML
+//                         }
+                      
+//                 })
+//             }
+//             else{
+//               alert ( "not work")
+//             }
+//         })
+//     })
+// },550)
+
+
+
+function addEventToCardPositionPlace() {
+    let cardsPosition = document.querySelectorAll(".cardposition");
+
+        cardsPosition.forEach(card => {
+            card.addEventListener('click',(element) => {
+                clickedCardPosition = element.currentTarget;
+                console.log(clickedCardPosition);
+        })
+        })
+}
+
+
+function addEventClickToCardWithValues() {
+    let cardsplayerwithvalues = document.querySelectorAll(".palyerCard");
+    cardsplayerwithvalues.forEach(card => {
+        card.addEventListener('click', element =>{
+            console.log(clickedCardPosition);
+            if(clickedCardPosition != null){
+                console.log(clickedCardPosition);
+                let position = clickedCardPosition.getAttribute("position");
+                let playerposition = element.currentTarget.getAttribute("position");
+                if(position==playerposition){
+                    console.log(element.currentTarget);
+                    document.getElementById(clickedCardPosition.id).innerHTML=element.currentTarget.innerHTML;
+                }
             }
-    
-            html += ` 
-                  <p>`+ player.nationality + `</p> 
-                  <div style="padding-bottom: 30px;">
-                  <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">
-                  <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.logo + `" alt="">
-                  </div>       
-               </div>
-            </div>
-        </div>`
-    
-        }
-        
-    
-    });
-    
-    
+            
+        });
+})
+}
 
-});
+

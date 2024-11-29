@@ -36,10 +36,11 @@
         <div style="display: flex; justify-content: space-around;" class="contain-players">
             <div class="hero-contain">
                 <div class="d-flex justify-content-evenly align-items-center">
-                    <div class="d-flex flex-column justify-content-center align-items-center"  class="cards-container">
-                        <a href="#players-container"><button class="cardid1" id="card-contain-id">
+                    <div class="d-flex flex-column justify-content-center align-items-center cards-container">
+                        <a href="#players-container" position="ST"  class="cardposition" id="st1">
+                            <button position="ST" value="ST" class="cardid1" id="card-contain-id">
+                                
                                 <div class="card-1">+</div>
-
                             </button>
                         </a>
                         <div class="card-st">ST</div>
@@ -47,7 +48,9 @@
                     </div>
 
                     <div class="d-flex flex-column justify-content-center align-items-center" class="cards-container">
-                        <a href="#players-container"><button class="cardid1" id="card-contain-id0">
+                        <a href="#players-container"  position="ST" class="cardposition" id="st2" >
+                            <button value="ST" class="cardid1" id="card-contain-id0">
+                                
                                 <div class="card-1">+</div>
                             </button>
                         </a>
@@ -57,14 +60,16 @@
                 </div>
                 <div class="d-flex justify-content-evenly ">
                     <div class="d-flex flex-column justify-content-center align-items-center" class="cards-container">
-                        <a href="#players-container"><button class="cardid1" id="card-contain-id1">
+                        <a href="#players-container" class="player_in_thelineUp" position="LW"><button class="cardid1" id="card-contain-id1">
                                 <div class="card-1">+</div>
 
                             </button></a>
                         <div class="card-st">LW</div>
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center" class="cards-container">
-                        <a href="#players-container"><button class="cardid1" id="card-contain-id2">
+                        <a href="#players-container" class="player_in_thelineUp" position="CM">
+                            <button class="cardid1" id="card-contain-id2">
+                                <span class="d-none">CM</span>
                                 <div class="card-1">+</div>
 
                             </button></a>
@@ -121,7 +126,7 @@
                 </div>
                 <div class="d-flex  justify-content-center " class="cards-container">
                     <a href="#players-container">
-                        <div class="d-flex flex-column justify-content-center align-items-center"  >
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             <button class="cardid1" id="card-contain-id9">
                                 <div class="card-1">+</div>
                             </button>
@@ -186,7 +191,7 @@
                 </div>
                 <div>
                     <input id="player-logo" type="text" required placeholder=" URL de logo">
-                    <small  style="display: none;">input cannot be empty</small>
+                    <small style="display: none;">input cannot be empty</small>
 
                 </div>
                 <div>
@@ -206,10 +211,10 @@
                 </div>
                 <div>
                     <input id="rates" type="number" placeholder="   rating">
-                    <small  style="display: none;" >input cannot be empty</small>
+                    <small style="display: none;">input cannot be empty</small>
                 </div>
 
-              
+
 
 
                 <select name="position" id="position">
@@ -228,34 +233,34 @@
                         <div>
 
                             <input id="player-pace" type="number" placeholder="  pace">
-                            <small style="display: none;" >this input is required </small>
+                            <small style="display: none;">this input is required </small>
                         </div>
                         <div>
 
                             <input id="player-shooting" type="number" placeholder="  shooting">
-                            <small style="display: none;" >this input is required </small>
+                            <small style="display: none;">this input is required </small>
                         </div>
                         <div>
 
                             <input id="player-passing" type="number" placeholder="  passing">
-                            <small style="display: none;" >this input is required </small>
+                            <small style="display: none;">this input is required </small>
                         </div>
 
                         <div>
                             <input id="player-driblling" type="number" placeholder="  driblling">
-                            <small  style="display: none;">this input is required </small>
-                            
+                            <small style="display: none;">this input is required </small>
+
                         </div>
 
                         <div>
 
                             <input id="player-defending" type="number" placeholder="  defending">
-                            <small style="display: none;" >this input is required </small>
+                            <small style="display: none;">this input is required </small>
                         </div>
                         <div>
                             <input id="player-physical" type="number" placeholder="  physical">
 
-                            <small style="display: none;"  >this input is required </small>
+                            <small style="display: none;">this input is required </small>
                         </div>
 
 
@@ -275,7 +280,7 @@
         </div>
     </section>
 
-    <section id="players-container" class="p-5"></section>
+    <section id="players-container" class="p-5 d-flex"></section>
 
     <script src="javascript.js"></script>
 </body>

@@ -160,10 +160,13 @@
     width: 132px;
     padding-top: 30px; 
 }
-.add-players-button{
- 
+.salma{
+    color: black;
+    background-color: #55CCA2;
+    
+    border: #55CCA2 solid 2px ;
+    border-radius: 10px; width:40px;height:30px
 }
-
 
 
 /* formation */

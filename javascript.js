@@ -1,5 +1,6 @@
 let conatiner = document.getElementById("container");
 var data = []
+
 async function filtrejson() {
     try {
         const response = await fetch('data.json');
@@ -9,12 +10,14 @@ async function filtrejson() {
         console.error("Error fetching json file", error);
     }
 }
-filtrejson()
+filtrejson();
+
+
 function afficherData(data) {
-    let html = " "
+    let html = "";
 
     data.players.forEach((player) => {
-        html += `<div style="display: flex;flex-direction: column;
+        html += `<div class="siham" style="display: flex;flex-direction: column;
     justify-self: center;
     align-items: center;"
      >
@@ -65,17 +68,22 @@ function afficherData(data) {
            </div>
         </div>
     </div>
-    <button style="color: black; background-color: #55CCA2; border: #55CCA2 solid 2px ;border-radius: 10px; width:40px;height:30px" class"salma">Add</button>
+     
+      <button class="salma">Add</button>
+      
     </div>
     
     `
 
-    });
+    });    
     document.getElementById("players-container").innerHTML = html
 
 
 
 }
+
+
+
 const formulairePlayers = document.getElementById("formulaire-players");
 const addPlayer = document.querySelector(".button-add-player");
 const formationPlayers = document.getElementById("formation-players");
@@ -142,6 +150,8 @@ const playerflag = document.getElementById("player-flag");
 const ajoutbtn = document.querySelector(".ajout-btn");
 
 
+
+// ajouter nouvelle players
 
 ajoutbtn.addEventListener('click', function () {
 
@@ -262,7 +272,6 @@ ajoutbtn.addEventListener('click', function () {
         status = false
 
     }
-
     console.log(playerrating.value)
     newPlayer.name = playernom.value
     console.log(playernom.value)
@@ -279,40 +288,42 @@ ajoutbtn.addEventListener('click', function () {
     newPlayer.logo = playerlogo.value
     newPlayer.flag = playerflag.value
     newPlayer.position = pos.value
-
-
     if (status) {
         data.players.unshift(newPlayer)
         afficherData(data)
     }
-
-
-
 });
+
+
 const card = document.getElementsByClassName("cardid1");
 const cards = Array.from(card)
-console.log(card)
 const players = document.getElementById("players-container");
-
-
 cards.forEach(item => {
     item.addEventListener('click', function () {
         players.style.display = 'flex';
     })
 });
 
-const AddPlayersbutton=document.getElementsByClassName("salma");
-const Playersbutton = Array.from(AddPlayersbutton)
-console.log(Playersbutton);
+
+
+
+ buttonsPlayers = document.querySelectorAll('#players-container');
+ console.log(buttonsPlayers);
+ 
+
 const CardsContainer=document.getElementsByClassName("cards-container");
 const CardSt=document.getElementsByClassName("card-st");
 const playerposition=document.getElementsByClassName("player-position");
   
-Playersbutton.forEach(e=>{
+
+
+Array.from(buttons).forEach(function(el){
+    console.log(el);
     
     
-    e.addEventListener('click',function(){
-        if(e.target.value==CardSt.value){
+    items.addEventListener('click',function(){
+        
+        if(playerposition.value==CardSt.value){
             CardsContainer.textContent=` <div class="card-container" >
                 <div   class ="player-contain1">
                 <div class="player-info" >
@@ -327,8 +338,6 @@ Playersbutton.forEach(e=>{
                   `
             if (player.position == "GK") {
                 html += `  <div>
-                    
-                    
                     <span>`+ player.diving + `</span>
                     <span>`+ player.handling + `</span>
                     <span>`+ player.kicking + `</span>
@@ -351,7 +360,6 @@ Playersbutton.forEach(e=>{
             }
     
             html += ` 
-              
                   <p>`+ player.nationality + `</p> 
                   <div style="padding-bottom: 30px;">
                   <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">

@@ -14,13 +14,16 @@ function afficherData(data) {
     let html = " "
 
     data.players.forEach((player) => {
-        html += `
+        html += `<div style="display: flex;flex-direction: column;
+    justify-self: center;
+    align-items: center;"
+     >
             <div class="card-container" >
             <div   class ="player-contain1">
             <div class="player-info" >
                 <div class="d-flex flex-">
                 <div >
-                <p>`+ player.position + `</p>
+                <p id"player-position">`+ player.position + `</p>
                 <h6>`+ player.rating + `</h6>
                 </div>
                 <img  style="width: 70px;" src="`+ player.photo + `" alt="">
@@ -62,6 +65,9 @@ function afficherData(data) {
            </div>
         </div>
     </div>
+    <button style="color: black; background-color: #55CCA2; border: #55CCA2 solid 2px ;border-radius: 10px; width:40px;height:30px" class"salma">Add</button>
+    </div>
+    
     `
 
     });
@@ -80,13 +86,12 @@ addPlayer.addEventListener('click', function () {
 });
 
 const pos = document.getElementById("position");
+const inputplay = document.getElementById("input-player");
 
 pos.addEventListener('change', (event) => {
     if (event.target.value === 'GK') {
         inputplay.innerHTML = `<div  style="display: flex; flex-direction: column;gap: 5px; " >
-
-                    
-                   
+                
                     <input type="number" placeholder="  diving">
          
                     <input type="number" placeholder="  handling">
@@ -119,7 +124,7 @@ pos.addEventListener('change', (event) => {
     }
 });
 
-const inputplay = document.getElementById("input-player");
+
 
 const playernom = document.getElementById("player-nom");
 const playernationalite = document.getElementById("player-nationalite");
@@ -151,25 +156,24 @@ ajoutbtn.addEventListener('click', function () {
     const flag = playerflag.value.trim();
     const passing = playerpassing.value.trim();
     const shooting = playershooting.value.trim();
-    const dribbling = playerdriblling.value.trim();
+    const driblling = playerdriblling.value.trim();
     const defending = playerdefending.value.trim();
     const nationality = playernationalite.value.trim();
 
     let status = true;
     let child;
     if (name.length == 0) {
-        child = playernom.nextElementSibling;
-        child.style.display = "block"
-        child.style.color = "red"
-
+        
+        playernom.nextElementSibling.style.display = "block"
+        playernom.nextElementSibling.style.color = "red"
         playernom.style.border = 'solid 2px red';
         status = false
     }
 
     if (nationality.length == 0) {
         child =playernationalite.nextElementSibling;
-        child.style.display = "block"
-        child.style.color = "red"
+        playernationalite.nextElementSibling.style.display = "block"
+        playernationalite.nextElementSibling.style.color = "red"
         playernationalite.style.border = 'solid 2px red';
         status = false
     }
@@ -178,6 +182,66 @@ ajoutbtn.addEventListener('click', function () {
         playerphoto.nextElementSibling.style.display = "block"
         playerphoto.nextElementSibling.style.color = "red"
         playerphoto.style.border = 'solid 2px red';
+        status = false
+    }
+    if (pace.length == 0) {
+        playerpace.nextElementSibling.style.display = "block"
+        playerpace.nextElementSibling.style.color = "red"
+        playerpace.style.border = 'solid 2px red';
+        status = false
+    }
+    if (rating.length == 0) {
+        playerrating.nextElementSibling.style.display = "block"
+        playerrating.nextElementSibling.style.color = "red"
+        playerrating.style.border = 'solid 2px red';
+        status = false
+    }
+    if (physical.length == 0) {
+        playerphysical.nextElementSibling.style.display = "block"
+        playerphysical.nextElementSibling.style.color = "red"
+        playerphysical.style.border = 'solid 2px red';
+        status = false
+    }
+    if (club.length == 0) {
+        playerclub.nextElementSibling.style.display = "block"
+        playerclub.nextElementSibling.style.color = "red"
+        playerclub.style.border = 'solid 2px red';
+        status = false
+    }
+    if (logo.length == 0) {
+        playerlogo.nextElementSibling.style.display = "block"
+        playerlogo.nextElementSibling.style.color = "red"
+        playerlogo.style.border = 'solid 2px red';
+        status = false
+    }
+    if (flag.length == 0) {
+        playerflag.nextElementSibling.style.display = "block"
+        playerflag.nextElementSibling.style.color = "red"
+        playerflag.style.border = 'solid 2px red';
+        status = false
+    }
+    if (passing.length == 0) {
+        playerpassing.nextElementSibling.style.display = "block"
+        playerpassing.nextElementSibling.style.color = "red"
+        playerpassing.style.border = 'solid 2px red';
+        status = false
+    }
+    if (defending.length == 0) {
+        playerdefending.nextElementSibling.style.display = "block"
+        playerdefending.nextElementSibling.style.color = "red"
+        playerdefending.style.border = 'solid 2px red';
+        status = false
+    }
+    if (shooting.length == 0) {
+        playershooting.nextElementSibling.style.display = "block"
+        playershooting.nextElementSibling.style.color = "red"
+        playershooting.style.border = 'solid 2px red';
+        status = false
+    }
+    if (driblling.length == 0) {
+        playerdriblling.nextElementSibling.style.display = "block"
+        playerdriblling.nextElementSibling.style.color = "red"
+        playerdriblling.style.border = 'solid 2px red';
         status = false
     }
 
@@ -200,7 +264,6 @@ ajoutbtn.addEventListener('click', function () {
     }
 
     console.log(playerrating.value)
-
     newPlayer.name = playernom.value
     console.log(playernom.value)
     newPlayer.rating = playerrating.value
@@ -236,4 +299,73 @@ cards.forEach(item => {
     item.addEventListener('click', function () {
         players.style.display = 'flex';
     })
-})
+});
+
+const AddPlayersbutton=document.getElementsByClassName("salma");
+const Playersbutton = Array.from(AddPlayersbutton)
+console.log(Playersbutton);
+const CardsContainer=document.getElementsByClassName("cards-container");
+const CardSt=document.getElementsByClassName("card-st");
+const playerposition=document.getElementsByClassName("player-position");
+  
+Playersbutton.forEach(e=>{
+    
+    
+    e.addEventListener('click',function(){
+        if(e.target.value==CardSt.value){
+            CardsContainer.textContent=` <div class="card-container" >
+                <div   class ="player-contain1">
+                <div class="player-info" >
+                    <div class="d-flex flex-">
+                    <div >
+                    <p class"player-position">`+ player.position + `</p>
+                    <h6>`+ player.rating + `</h6>
+                    </div>
+                    <img  style="width: 70px;" src="`+ player.photo + `" alt="">
+                    </div>
+                  <p> `+ player.name + `</p>
+                  `
+            if (player.position == "GK") {
+                html += `  <div>
+                    
+                    
+                    <span>`+ player.diving + `</span>
+                    <span>`+ player.handling + `</span>
+                    <span>`+ player.kicking + `</span>
+                    <span>`+ player.reflexes + `</span>
+                    <span>`+ player.speed + `</span>
+                    <span>`+ player.positioning + `</span>
+                    
+                </div>`
+    
+            } else {
+                html += `  <div>
+                    
+                    <span>`+ player.pace + `</span>
+                    <span>`+ player.shooting + `</span>
+                    <span>`+ player.passing + `</span>
+                    <span>`+ player.dribbling + `</span>
+                    <span>`+ player.defending + `</span>
+                    <span>`+ player.physical + `</span>
+                </div>`
+            }
+    
+            html += ` 
+              
+                  <p>`+ player.nationality + `</p> 
+                  <div style="padding-bottom: 30px;">
+                  <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.flag + `" alt="">
+                  <img style="border-radius: 50%; width:20px; height:20px"  src="`+ player.logo + `" alt="">
+                  </div>       
+               </div>
+            </div>
+        </div>`
+    
+        }
+        
+    
+    });
+    
+    
+
+});

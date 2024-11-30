@@ -8,17 +8,34 @@ async function getData() {
         const response = await fetch('data.json');
         data = await response.json();
         afficherData(data);
+
     } catch (error) {
         console.error("Error fetching json file", error);
     }
 }
 getData();
 
+
+function addEventListenerToDeleteButtons() {
+    Array.from(document.getElementsByClassName("deleteFromData")).forEach(e => {
+        e.addEventListener("click", e => {
+            let name_player = e.currentTarget.value;
+            data.players = data.players.filter(e => 
+                e.name !== name_player
+            )
+            afficherData(data);
+        })
+    })
+}
+
+
 function afficherData(data) {
     let html = "";
 
     data.players.forEach((player) => {
-        html += `<div class="palyerCard" playe_name="${player.name}" position="${player.position}" style="display: flex;flex-direction: column;
+        html += `<div style="position:relative;" >
+        <button class="deleteFromData" value="${player.name}"   >x</button>
+        <div class="palyerCard" playe_name="${player.name}" position="${player.position}" style="display: flex;flex-direction: column;
     justify-self: center;
     align-items: center;"
      >
@@ -66,6 +83,7 @@ function afficherData(data) {
         </div>
     </div>
     </div>
+    </div>
     
     `
 
@@ -73,6 +91,7 @@ function afficherData(data) {
     document.getElementById("players-container").innerHTML = html;
     addEventToCardPositionPlace();
     addEventClickToCardWithValues();
+    addEventListenerToDeleteButtons();
 }
 
 
@@ -216,23 +235,23 @@ ajoutbtn.addEventListener('click', function () {
 
 
 
-    if (pace.length == 0 || !numberRegex.test(pace)) {
-        if (pace.length == 0) {
-            playerpace.nextElementSibling.style.display = "block"
-            playerpace.nextElementSibling.style.color = "red"
-            playerpace.style.border = 'solid 2px red';
-            status = false
-        }
-        else {
-            playerpace.nextElementSibling.style.display = "block"
-            playerpace.nextElementSibling.style.color = "red"
-            playerpace.nextElementSibling.textContent = "the value you enter not much the requerment"
-            playerpace.style.border = 'solid 2px red';
-            status = false
 
-        }
+    if (pace.length == 0) {
+        playerpace.nextElementSibling.style.display = "block"
+        playerpace.nextElementSibling.style.color = "red"
+        playerpace.style.border = 'solid 2px red';
+        status = false
+    }
+    else if (!numberRegex.test(pace)) {
+        playerpace.nextElementSibling.style.display = "block"
+        playerpace.nextElementSibling.style.color = "red"
+        playerpace.nextElementSibling.textContent = "the value you enter not much the requerment"
+        playerpace.style.border = 'solid 2px red';
+        status = false
 
     }
+
+
     if (rating.length == 0) {
         playerrating.nextElementSibling.style.display = "block"
         playerrating.nextElementSibling.style.color = "red"
@@ -394,6 +413,8 @@ Array.from(document.getElementsByClassName("button_remove_player_from_the_lineup
         event.currentTarget.style.display = "none";
     });
 });
+
+
 
 
 

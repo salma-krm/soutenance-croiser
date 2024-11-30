@@ -284,3 +284,14 @@ input,select{
 .cards-container{
     position: relative;
 }
+
+.deleteFromData{
+    position: absolute;
+    z-index: 50;
+    right: 10px;
+    top: 10px;
+    border-radius: 100%;
+    border: none;
+    width: 23px;
+
+}

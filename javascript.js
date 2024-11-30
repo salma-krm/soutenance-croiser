@@ -2,7 +2,7 @@ let conatiner = document.getElementById("container");
 var clickedCardPosition = null;
 
 var data = [];
-
+var playerInTheLineUp = []
 async function getData() {
     try {
         const response = await fetch('data.json');
@@ -18,19 +18,20 @@ function afficherData(data) {
     let html = "";
 
     data.players.forEach((player) => {
-        html += `<div class="palyerCard" position="${player.position}" style="display: flex;flex-direction: column;
+        html += `<div class="palyerCard" playe_name="${player.name}" position="${player.position}" style="display: flex;flex-direction: column;
     justify-self: center;
     align-items: center;"
      >
             <div class="card-container" >
             <div   class ="player-contain1">
             <div class="player-info" >
-                <div class="d-flex flex-">
+                <div class="d-flex  ">
                 <div >
                 <p id"player-position">`+ player.position + `</p>
                 <h6>`+ player.rating + `</h6>
                 </div>
                 <img  style="width: 70px;" src="`+ player.photo + `" alt="">
+                <button style="display:none" class="button-supprimer " playe="${player.name}"   >X</button>
                 </div>
               <p> `+ player.name + `</p>
               `
@@ -165,8 +166,8 @@ ajoutbtn.addEventListener('click', function () {
     let status = true;
     let nameRegex = /^[a-zA-Z\s]+$/;
     let numberRegex = /^[0-9]{2}$/;
-    let photoregex  = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
-    
+    let photoregex = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
+
     if (name.length == 0 || !nameRegex.test(name) || name.length < 2 || name.length > 50) {
         if (name.length == 0) {
             playernom.nextElementSibling.style.display = "block"
@@ -184,16 +185,16 @@ ajoutbtn.addEventListener('click', function () {
         }
     }
 
-  
-    if (nationality.length == 0|| !nameRegex.test(nationality) || nationality.length < 2 || nationality.length > 50) {
-        if(nationality.length == 0){
+
+    if (nationality.length == 0 || !nameRegex.test(nationality) || nationality.length < 2 || nationality.length > 50) {
+        if (nationality.length == 0) {
             playernationalite.nextElementSibling.style.display = "block"
             playernationalite.nextElementSibling.style.color = "red"
             playernationalite.style.border = 'solid 2px red';
             status = false
 
         }
-        else{
+        else {
             playernationalite.nextElementSibling.style.display = "block"
             playernationalite.nextElementSibling.style.color = "red"
             playernationalite.nextElementSibling.textContent = "the value you enter not much the requerment"
@@ -203,22 +204,28 @@ ajoutbtn.addEventListener('click', function () {
         }
     }
 
-    if (photo.length == 0 ||!photoregex.test(photo) )   {
+    if (photo.length == 0 || !photoregex.test(photo)) {
         playerphoto.nextElementSibling.style.display = "block"
         playerphoto.nextElementSibling.style.color = "red"
         playerphoto.style.border = 'solid 2px red';
         status = false
     }
+
+
+
+
+
+
     if (pace.length == 0 || !numberRegex.test(pace)) {
-        if(pace.length == 0){
+        if (pace.length == 0) {
             playerpace.nextElementSibling.style.display = "block"
             playerpace.nextElementSibling.style.color = "red"
             playerpace.style.border = 'solid 2px red';
             status = false
         }
-        else{
+        else {
             playerpace.nextElementSibling.style.display = "block"
-             playerpace.nextElementSibling.style.color = "red"
+            playerpace.nextElementSibling.style.color = "red"
             playerpace.nextElementSibling.textContent = "the value you enter not much the requerment"
             playerpace.style.border = 'solid 2px red';
             status = false
@@ -283,24 +290,8 @@ ajoutbtn.addEventListener('click', function () {
 
 
 
-    // if (!nameRegex.test(name)) {
 
-    //     playernom.nextElementSibling.style.display = "block"
-    //     playernom.nextElementSibling.style.color = "red"
-    //     playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
-    //     playernom.style.border = 'solid 2px red';
-    //     status = false
-
-    // }
-
-    // if (name.length < 2 || name.length > 50) {
-
-    //     status = false
-
-    // }
-    
     newPlayer.name = playernom.value
-  
     newPlayer.rating = playerrating.value
     newPlayer.nationality = playernationalite.value
     newPlayer.pace = playerpace.value
@@ -314,106 +305,95 @@ ajoutbtn.addEventListener('click', function () {
     newPlayer.logo = playerlogo.value
     newPlayer.flag = playerflag.value
     newPlayer.position = pos.value
+
+
     if (status) {
         data.players.unshift(newPlayer)
         afficherData(data)
     }
 });
-
-
-
 const players = document.getElementById("players-container");
-
-
-// addEventToPlayersCard();
-
 var selectedPosition;
 function addEventToPlayersCard() {
-    // const CardSt = document.querySelectorAll(".card-st");
-
-
-    // playersCards.forEach(function (playerCard) {
-
-    //     playerCard.addEventListener('click', function () {
-    //         playerTargetContent = playerCard;
-    //         let position = playerCard.getAttribute("position");
-    //         CardSt.forEach(post => {
-    //             futureCard.innerHTML = playerCard.innerHTML;
-    //             if (position == post.innerText) {
-
-    //             }
-
-
-    //         });
-    //     });
-
-    // });
-
-    // players.style.display = "flex"
-    // const futureCard = document.getElementById("card-contain-id");
-    // Array.from(document.getElementsByClassName("cardid1")).forEach(function (e) {
-    //     e.addEventListener("click", function (e) {
-    //         selectedPosition = e.target.value
-    //         // console.log(e.target.value);
-    //     });
-    // });
-
-    
-
 }
-
-// setTimeout(()=>{
-//     Array.from(document.getElementsByClassName("palyerCard")).forEach(function(e){
-//         e.addEventListener("click",function(e){
-             
-      
-//             if( selectedPosition != null && e.currentTarget.getAttribute("position") == selectedPosition ){
-//                 Array.from(document.getElementsByClassName("player_in_thelineUp")).forEach(function (c) {
-                    
-//                         if(c.getAttribute("position")  === selectedPosition ){
-//                             c.innerHTML = e.currentTarget.innerHTML
-//                         }
-                      
-//                 })
-//             }
-//             else{
-//               alert ( "not work")
-//             }
-//         })
-//     })
-// },550)
-
-
 
 function addEventToCardPositionPlace() {
     let cardsPosition = document.querySelectorAll(".cardposition");
 
-        cardsPosition.forEach(card => {
-            card.addEventListener('click',(element) => {
-                clickedCardPosition = element.currentTarget;
-                console.log(clickedCardPosition);
+    cardsPosition.forEach(card => {
+        card.addEventListener('click', (element) => {
+            clickedCardPosition = element.currentTarget;
+            console.log(clickedCardPosition);
         })
-        })
-}
-
+    })
+};
 
 function addEventClickToCardWithValues() {
     let cardsplayerwithvalues = document.querySelectorAll(".palyerCard");
     cardsplayerwithvalues.forEach(card => {
-        card.addEventListener('click', element =>{
-            console.log(clickedCardPosition);
-            if(clickedCardPosition != null){
-                console.log(clickedCardPosition);
+        card.addEventListener('click', element => {
+
+            if (clickedCardPosition != null) {
+
                 let position = clickedCardPosition.getAttribute("position");
                 let playerposition = element.currentTarget.getAttribute("position");
-                if(position==playerposition){
-                    console.log(element.currentTarget);
-                    document.getElementById(clickedCardPosition.id).innerHTML=element.currentTarget.innerHTML;
+                let name = element.currentTarget.getAttribute("playe_name")
+                if (position == playerposition) {
+
+                    document.getElementById(clickedCardPosition.id).innerHTML = element.currentTarget.innerHTML;
+                    document.getElementById(clickedCardPosition.id).setAttribute("name_player", name);
+                    let filteredPlayers = data.players.filter((e) => e.name !== name);
+
+                    let playerToMove = data.players.filter((e) => e.name === name)[0];
+
+                    if (playerToMove) {
+                        clickedCardPosition.previousElementSibling.style.display = "block";
+                        data.players = filteredPlayers;
+                        playerInTheLineUp.push(playerToMove);
+                    } else {
+                        console.log(`Player with name "${name}" not found.`);
+                    }
+                    afficherData(data)
+                } else {
+                    console.log("not work")
                 }
             }
-            
+            clickedCardPosition == null
+
+
+            console.log(playerInTheLineUp)
         });
-})
-}
+    })
+
+};
+
+
+Array.from(document.getElementsByClassName("button_remove_player_from_the_lineup")).forEach((e) => {
+    e.addEventListener("click", (event) => {
+
+        const nextElem = event.currentTarget.nextElementSibling
+
+        if (nextElem) {
+
+
+            let playeName = nextElem.getAttribute("name_player")
+            nextElem.removeAttribute("name_player")
+            let filteredPlayers = playerInTheLineUp.filter((e) => e.name === playeName)[0];
+
+            let playerToMove = data.players.unshift(filteredPlayers);
+            afficherData(data)
+
+
+            nextElem.innerHTML = ` 
+                <button class="cardid1" id="card-contain-id0">
+                    <div class="card-1">+</div>
+                </button>`;
+        }
+
+
+        event.currentTarget.style.display = "none";
+    });
+});
+
 
 

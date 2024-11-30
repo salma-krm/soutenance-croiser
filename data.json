@@ -81,6 +81,22 @@
         "physical": 86
       },
       {
+        "name": "TEST van Dijk",
+        "photo": "https://cdn.sofifa.net/players/203/376/25_120.png",
+        "position": "CB",
+        "nationality": "Netherlands",
+        "flag": "https://cdn.sofifa.net/flags/nl.png",
+        "club": "Liverpool",
+        "logo": "https://cdn.sofifa.net/meta/team/8/120.png",
+        "rating": 90,
+        "pace": 75,
+        "shooting": 60,
+        "passing": 70,
+        "dribbling": 72,
+        "defending": 92,
+        "physical": 86
+      },
+      {
         "name": "Antonio Rudiger",
         "photo": "https://cdn.sofifa.net/players/205/452/25_120.png",
         "position": "CB",

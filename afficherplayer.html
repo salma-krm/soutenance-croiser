@@ -33,7 +33,7 @@
             <h1>EA FC 25 Tactics & Formations</h1>
             <h2>Build Custom Tactics & Formations</h2>
         </div>
-        <div  class="container d-flex flex-column flex-lg-row ">
+        <div class="container d-flex flex-column flex-lg-row gap-4 ">
             <div class="hero-contain">
                 <div class="d-flex justify-content-evenly align-items-center">
                     <div class="d-flex flex-column justify-content-center align-items-center cards-container">
@@ -253,8 +253,8 @@
                     <option value="CB">CB</option>
                     <option value="GK">GK</option>
                 </select>
-                <div id="input-player">
-                    <div>
+                <div id="input-player " >
+                    <div   id="ST-player"  style="display: flex; flex-direction: column; gap: 20px;">
 
                         <div>
 
@@ -288,10 +288,44 @@
 
                             <small  class="input-small">this input is required </small>
                         </div>
-
-
-
                     </div>
+
+                    <div id="GK-player"  style="display: none; flex-direction: column; gap: 20px;">
+                        <div>
+
+                            <input id="player-diving1" type="number" placeholder="  diving ">
+                            <small  class="input-small">this input is required </small>
+                        </div>
+                        <div>
+
+                            <input id="player-handling1" type="number" placeholder="handling">
+                            <small  class="input-small">this input is required </small>
+                        </div>
+                        <div>
+
+                            <input id="player-kicking1" type="number" placeholder=" kicking ">
+                            <small class="input-small">this input is required </small>
+                        </div>
+
+                        <div>
+                            <input id="player-reflexes1" type="number" placeholder="  reflexes">
+                            <small class="input-small">this input is required </small>
+
+                        </div>
+
+                        <div>
+
+                            <input id="player-positioning1" type="number" placeholder="  positioning">
+                            <small class="input-small">this input is required </small>
+                        </div>
+                        <div>
+                            <input id="player-speed1" type="number" placeholder="  speed">
+
+                            <small  class="input-small">this input is required </small>
+                        </div>
+                        
+                    </div>
+                    
                 </div>
 
 
@@ -300,15 +334,67 @@
                     <option value="4-4-2">4-4-2</option>
                 </select>
             </div>
-
-            <div class="ajout-btn"><button id="btn1">AJOUTER</button></div>
+          <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;margin: 20px;" >
+            <div class="ajout-btn"><button id="btn1">Ajouter</button></div>
+            <div class="modif-btn"><button id="btn2modifier">Modifier</button></div>
+         </div>
+            
         </div>
      </div>
    
     
     </section>
 
-    <section id="players-container" class="p-5 d-flex"></section>
+    <section id="players-container" class="p-5 d-flex "></section>
+    <!-- <section>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editPlayerModal">
+            Modifier Joueur
+        </button>
+        <div  class="modal fade " id="editPlayerModal" tabindex="-1" aria-labelledby="editPlayerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editPlayerModalLabel">Modifier les informations du joueur</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <form id="editPlayerForm">
+                            <div class="mb-3">
+                                <label for="playerName" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="playerName" placeholder="Entrez le nom du joueur">
+                            </div>
+                            <div class="mb-3">
+                                <label for="playerPhoto" class="form-label">Photo (URL)</label>
+                                <input type="text" class="form-control" id="playerPhoto" placeholder="Entrez l'URL de la photo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="playerPosition" class="form-label">Position</label>
+                                <select class="form-select" id="playerPosition">
+                                    <option value="ST">ST</option>
+                                    <option value="RW">RW</option>
+                                    <option value="LW">LW</option>
+                                    <option value="CM">CM</option>
+                                    <option value="RB">RB</option>
+                                    <option value="LB">LB</option>
+                                    <option value="CB">CB</option>
+                                    <option value="GK">GK</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="playerRating" class="form-label">Note</label>
+                                <input type="number" class="form-control" id="playerRating" placeholder="Entrez la note du joueur">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary" onclick="savePlayerChanges()">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section> -->
 
     <script src="javascript.js"></script>
 </body>

@@ -48,7 +48,7 @@
 .hero-contain{
    display: flex;
    flex-direction: column;
-    padding-left: 50px;
+    padding-left: 20px;
     background: url(/images/télécharger.svg) no-repeat;
     width: 900px;
     color: white;
@@ -63,7 +63,7 @@
     padding: 0;
     margin: 0;
     position: relative;
-    aspect-ratio: 13/19;
+    aspect-ratio: 13/20;
     height: 162px;
     background: url(/images/placeholder-card-normal.webp) no-repeat;
     background-position-x: center;
@@ -237,19 +237,25 @@
 
 .ajout-btn{
     display: flex;
-    justify-content: center;
-    padding-top: 20px;
 }
 #btn1{
-    display: flex;
-    justify-content: center;
     width: 100px;
     height: 30px;
     border-radius: 10px;
     background-color: #55CCA2;
     border: none;
     color: white;
-    
+    text-align: center;
+
+}
+#btn2modifier{
+   
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: blue;
+    border: none;
+    color: white;
     text-align: center;
 
 }
@@ -258,11 +264,9 @@ input,select{
     width: 248px;
     height:50px;
     border-radius: 10px;
-    
     background-color: rgb(42,47,52);
     color: white;
     border: #55CCA2 solid 2px;
-
 }
 
 .button_remove_player_from_the_lineup{
@@ -294,4 +298,19 @@ input,select{
     border: none;
     width: 23px;
 
+
+}
+.card-contain-player{
+    position:relative;
+     display:flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    
+}
+.button_edited{
+    background-color:#55CCA2;
+    border: none;
+    border-radius: 30%;
+    width: 40px;
 }

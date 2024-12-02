@@ -129,7 +129,6 @@
     width: 150px;
     height: 200px;
     text-align: center;
-    margin: 10px;
     position: relative;
     background-size: contain;
     justify-content: center;
@@ -313,4 +312,22 @@ input,select{
     border: none;
     border-radius: 30%;
     width: 40px;
+}
+.edditbutton{
+    background-color: #55CCA2;
+    border: none;
+    border-radius: 10%;
+}
+#GK-player{
+    display: none; 
+    
+    flex-direction: column;
+     
+
+}
+#ST-player{
+    display: block; 
+    flex-direction: column;
+     gap: 20px;
+
 }

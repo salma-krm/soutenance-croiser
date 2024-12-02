@@ -7,10 +7,14 @@ async function getData() {
     try {
         const response = await fetch('data.json');
         data = await response.json();
+
         afficherData(data);
 
     } catch (error) {
+
         console.error("Error fetching json file", error);
+
+
     }
 }
 getData();
@@ -20,7 +24,7 @@ function addEventListenerToDeleteButtons() {
     Array.from(document.getElementsByClassName("deleteFromData")).forEach(e => {
         e.addEventListener("click", e => {
             let name_player = e.currentTarget.value;
-            data.players = data.players.filter(e => 
+            data.players = data.players.filter(e =>
                 e.name !== name_player
             )
             afficherData(data);
@@ -45,7 +49,7 @@ function afficherData(data) {
                 <div class="d-flex  ">
                 <div >
                 <p id"player-position">`+ player.position + `</p>
-                <h6>`+ player.rating +`</h6>
+                <h6>`+ player.rating + `</h6>
                 </div>
                 <img  style="width: 70px;" src="`+ player.photo + `" alt="">
                 <button style="display:none" class="button-supprimer " playe="${player.name}"   >X</button>
@@ -105,17 +109,19 @@ const formationPlayers = document.getElementById("formation-players");
 addPlayer.addEventListener('click', function () {
     formulairePlayers.style.display = 'block';
     formationPlayers.style.display = 'none';
+    document.getElementById("btn2modifier").style.display='none';
+
 });
 
 const pos = document.getElementById("position");
 const GKPlayer = document.getElementById("GK-player");
-const  STPlayer=document.getElementById("ST-player");
+const STPlayer = document.getElementById("ST-player");
 
 pos.addEventListener('change', (event) => {
     if (event.target.value === 'GK') {
-        STPlayer.style.display='none';
-        GKPlayer.style.display='block';
-       
+        STPlayer.style.display = 'none';
+        GKPlayer.style.display = 'block';
+
     }
 });
 
@@ -159,12 +165,12 @@ ajoutbtn.addEventListener('click', function () {
     const driblling = playerdriblling.value.trim();
     const defending = playerdefending.value.trim();
     const nationality = playernationalite.value.trim();
-    const diving =playerdiving.value.trim();
-    const  handling =playerhandling.value.trim();
-    const kicking =playerkicking.value.trim();
-    const reflexes =playerreflexes.value.trim();
-    const speed= playerspeed.value.trim();
-    const positioning =playerpositioning.value.trim();
+    const diving = playerdiving.value.trim();
+    const handling = playerhandling.value.trim();
+    const kicking = playerkicking.value.trim();
+    const reflexes = playerreflexes.value.trim();
+    const speed = playerspeed.value.trim();
+    const positioning = playerpositioning.value.trim();
 
 
 
@@ -285,73 +291,33 @@ ajoutbtn.addEventListener('click', function () {
         playerdriblling.style.border = 'solid 2px red';
         status = false
     }
-//     if (diving.length == 0) {
-//         playerdiving.nextElementSibling.style.display = "block"
-//         playerdiving.nextElementSibling.style.color = "red"
-//         playerdiving.style.border = 'solid 2px red';
-//         status = false
-//     } if (handling.length == 0) {
-//         playerhandling.nextElementSibling.style.display = "block"
-//         playerhandling.nextElementSibling.style.color = "red"
-//         playerhandling.style.border = 'solid 2px red';
-//         status = false
-//     }
-//     if (kicking.length == 0) {
-//     playerkicking.nextElementSibling.style.display = "block"
-//     playerkicking.nextElementSibling.style.color = "red"
-//     playerkicking.style.border = 'solid 2px red';
-//     status = false
-//    }
-//    if (reflexes.length == 0) {
-//     playerreflexes.nextElementSibling.style.display = "block"
-//     playerreflexes.nextElementSibling.style.color = "red"
-//     playerreflexes.style.border = 'solid 2px red';
-//     status = false
-//    }
-//    if (speed.length == 0) {
-//     playerspeed.nextElementSibling.style.display = "block"
-//     playerspeed.nextElementSibling.style.color = "red"
-//     playerspeed.style.border = 'solid 2px red';
-//     status = false
-//    }
-//    if (positioning.length == 0) {
-//     playerpositioning.nextElementSibling.style.display = "block"
-//     playerpositioning.nextElementSibling.style.color = "red"
-//     playerpositioning.style.border = 'solid 2px red';
-//     status = false
-//    }
-  
 
 
-
-
-
-    
-
-    if( pos.value === "GK"){
-        console.log(pos.value);
+    if (pos.value === "GK") {
         
+
         newPlayer.name = playernom.value
-        newPlayer.rating  = playerrating.value
+        newPlayer.rating = playerrating.value
         newPlayer.nationality = playernationalite.value
         newPlayer.handling = playerhandling.value
         newPlayer.physical = playerphysical.value
         newPlayer.club = playerclub.value
         newPlayer.kicking = playerkicking.value
         newPlayer.reflexes = playerreflexes.value
-        newPlayer.positioning  = playerpositioning.value
+        newPlayer.positioning = playerpositioning.value
         newPlayer.speed = playerspeed.value
         newPlayer.photo = playerphoto.value
         newPlayer.logo = playerlogo.value
         newPlayer.flag = playerflag.value
+        newPlayer.diving =playerdiving.value
         newPlayer.position = pos.value
-       
-        
+
+
 
     }
-    else{
+    else {
         newPlayer.name = playernom.value
-        newPlayer.rating  = playerrating.value
+        newPlayer.rating = playerrating.value
         newPlayer.nationality = playernationalite.value
         newPlayer.pace = playerpace.value
         newPlayer.physical = playerphysical.value
@@ -366,7 +332,7 @@ ajoutbtn.addEventListener('click', function () {
         newPlayer.position = pos.value
 
     }
-   
+
 
 
     if (status) {
@@ -381,6 +347,7 @@ function addEventToPlayersCard() {
 
 function addEventToCardPositionPlace() {
     let cardsPosition = document.querySelectorAll(".cardposition");
+
 
     cardsPosition.forEach(card => {
         card.addEventListener('click', (element) => {
@@ -399,6 +366,7 @@ function addEventClickToCardWithValues() {
 
                 let position = clickedCardPosition.getAttribute("position");
                 let playerposition = element.currentTarget.getAttribute("position");
+
                 let name = element.currentTarget.getAttribute("playe_name")
                 if (position == playerposition) {
 
@@ -440,8 +408,7 @@ Array.from(document.getElementsByClassName("button_remove_player_from_the_lineup
             let playeName = nextElem.getAttribute("name_player")
             nextElem.removeAttribute("name_player")
             let filteredPlayers = playerInTheLineUp.filter((e) => e.name === playeName)[0];
-
-            let playerToMove = data.players.unshift(filteredPlayers);
+              data.players.unshift(filteredPlayers);
             afficherData(data)
 
 
@@ -455,311 +422,6 @@ Array.from(document.getElementsByClassName("button_remove_player_from_the_lineup
         event.currentTarget.style.display = "none";
     });
 });
-
-// partie de modification de joueur
-
-
-
-function addEventEditedPlayer(){
-
-const Edditbuttons = document.querySelectorAll(".edditbutton");
-
-Array.from(Edditbuttons).forEach(button => {
-    button.addEventListener("click", function (e) {
-        console.log( document.getElementById("formulaire-players"))
-        document.getElementById("formulaire-players").style.display = 'block';
-        document.getElementById("formation-players").style.display = 'none';
-        document.getElementById("btn1").style.display='none';
-        editedPlayer =e.currentTarget.value
-       
-
-
-        let playerToEdit = data.players.filter((e) => e.name == editedPlayer)
-        playerToEdit = playerToEdit[0]
-         
-            document.getElementById("player-nom").value = playerToEdit.name;
-            document.getElementById("rates").value = playerToEdit.rating;
-            document.getElementById("player-nationalite").value = playerToEdit.nationality;
-            document.getElementById("player-club").value = playerToEdit.club;
-            document.getElementById("player-photo").value=playerToEdit.photo;
-           document.getElementById("player-logo").value=playerToEdit.logo;
-          document.getElementById("player-flag").value=playerToEdit.flag;
-        document.getElementById("position").value = playerToEdit.position
-            
-        if(playerToEdit.position == "GK"){
-            
-            console.log(document.getElementById("GK-player"))
-            document.getElementById("GK-player").style.display = "block"
-            document.getElementById("ST-player").style.display = "none"
-            document.getElementById("player-handling1").value = playerToEdit.handling;
-            document.getElementById("player-kicking1").value = playerToEdit.kicking;
-            document.getElementById("player-reflexes1").value = playerToEdit.reflexes;
-            document.getElementById("player-positioning1").value = playerToEdit.positioning;
-            document.getElementById("player-speed1").value=playerToEdit.speed;
-            document.getElementById("player-diving1").value=playerToEdit.diving;
-
-        }else{
-            
-            document.getElementById("GK-player").style.display = "none"
-            document.getElementById("ST-player").style.display = "block"
-            
-            
-        }
-
-    });
-});
- 
-}
-
-document.getElementById("btn2modifier").addEventListener("click",function() {
-    let newPlayer = {};
-    const name = playernom.value.trim();
-    const pace = playerpace.value.trim();
-    const rating = playerrating.value.trim();
-    const photo = playerphoto.value.trim();
-    const physical = playerphysical.value.trim();
-    const club = playerclub.value.trim();
-    const logo = playerlogo.value.trim();
-    const flag = playerflag.value.trim();
-    const passing = playerpassing.value.trim();
-    const shooting = playershooting.value.trim();
-    const driblling = playerdriblling.value.trim();
-    const defending = playerdefending.value.trim();
-    const nationality = playernationalite.value.trim();
-    const diving =playerdiving.value.trim();
-    const  handling =playerhandling.value.trim();
-    const kicking =playerkicking.value.trim();
-    const reflexes =playerreflexes.value.trim();
-    const speed= playerspeed.value.trim();
-    const positioning =playerpositioning.value.trim();
-
-
-    let status = true;
-    let nameRegex = /^[a-zA-Z\s]+$/;
-    let numberRegex = /^[0-9]{2}$/;
-    let photoregex = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi;
-
-    if (name.length == 0 || !nameRegex.test(name) || name.length < 2 || name.length > 50) {
-        if (name.length == 0) {
-            playernom.nextElementSibling.style.display = "block"
-            playernom.nextElementSibling.style.color = "red"
-            playernom.style.border = 'solid 2px red';
-            status = false
-        }
-        else {
-            playernom.nextElementSibling.style.display = "block"
-            playernom.nextElementSibling.style.color = "red"
-            playernom.nextElementSibling.textContent = "the value you enter not much the requerment"
-            playernom.style.border = 'solid 2px red';
-            status = false
-
-        }
-    }
-
-
-    if (nationality.length == 0 || !nameRegex.test(nationality) || nationality.length < 2 || nationality.length > 50) {
-        if (nationality.length == 0) {
-            playernationalite.nextElementSibling.style.display = "block"
-            playernationalite.nextElementSibling.style.color = "red"
-            playernationalite.style.border = 'solid 2px red';
-            status = false
-
-        }
-        else {
-            playernationalite.nextElementSibling.style.display = "block"
-            playernationalite.nextElementSibling.style.color = "red"
-            playernationalite.nextElementSibling.textContent = "the value you enter not much the requerment"
-            playernationalite.style.border = 'solid 2px red';
-            status = false
-
-        }
-    };
-    if (photo.length == 0 || !photoregex.test(photo)) {
-        playerphoto.nextElementSibling.style.display = "block"
-        playerphoto.nextElementSibling.style.color = "red"
-        playerphoto.style.border = 'solid 2px red';
-        status = false
-    };
-    if (pace == 0) {
-        playerpace.nextElementSibling.style.display = "block"
-        playerpace.nextElementSibling.style.color = "red"
-        playerpace.style.border = 'solid 2px red';
-        status = false
-    }
-    else if (!numberRegex.test(pace)) {
-        playerpace.nextElementSibling.style.display = "block"
-        playerpace.nextElementSibling.style.color = "red"
-        playerpace.nextElementSibling.textContent = "the value you enter not much the requerment"
-        playerpace.style.border = 'solid 2px red';
-        status = false
-
-    }
-    if (rating == 0) {
-        playerrating.nextElementSibling.style.display = "block"
-        playerrating.nextElementSibling.style.color = "red"
-        playerrating.style.border = 'solid 2px red';
-        status = false
-    }
-    if (physical == 0) {
-        playerphysical.nextElementSibling.style.display = "block"
-        playerphysical.nextElementSibling.style.color = "red"
-        playerphysical.style.border = 'solid 2px red';
-        status = false
-    }
-    if (club == 0) {
-        playerclub.nextElementSibling.style.display = "block"
-        playerclub.nextElementSibling.style.color = "red"
-        playerclub.style.border = 'solid 2px red';
-        status = false
-    }
-    if (logo == 0) {
-        playerlogo.nextElementSibling.style.display = "block"
-        playerlogo.nextElementSibling.style.color = "red"
-        playerlogo.style.border = 'solid 2px red';
-        status = false
-    }
-    if (flag == 0) {
-        playerflag.nextElementSibling.style.display = "block"
-        playerflag.nextElementSibling.style.color = "red"
-        playerflag.style.border = 'solid 2px red';
-        status = false
-    }
-    if (passing == 0) {
-        playerpassing.nextElementSibling.style.display = "block"
-        playerpassing.nextElementSibling.style.color = "red"
-        playerpassing.style.border = 'solid 2px red';
-        status = false
-    }
-    if (defending == 0) {
-        playerdefending.nextElementSibling.style.display = "block"
-        playerdefending.nextElementSibling.style.color = "red"
-        playerdefending.style.border = 'solid 2px red';
-        status = false
-    }
-    if (shooting == 0) {
-        playershooting.nextElementSibling.style.display = "block"
-        playershooting.nextElementSibling.style.color = "red"
-        playershooting.style.border = 'solid 2px red';
-        status = false
-    }
-    if (driblling == 0) {
-        playerdriblling.nextElementSibling.style.display = "block"
-        playerdriblling.nextElementSibling.style.color = "red"
-        playerdriblling.style.border = 'solid 2px red';
-        status = false
-    }
-
-    if (diving == 0) {
-        playerdiving.nextElementSibling.style.display = "block"
-        playerdiving.nextElementSibling.style.color = "red"
-        playerdiving.style.border = 'solid 2px red';
-        status = false
-    } if (handling == 0) {
-        playerhandling.nextElementSibling.style.display = "block"
-        playerhandling.nextElementSibling.style.color = "red"
-        playerhandling.style.border = 'solid 2px red';
-        status = false
-    }
-    if (kicking == 0) {
-    playerkicking.nextElementSibling.style.display = "block"
-    playerkicking.nextElementSibling.style.color = "red"
-    playerkicking.style.border = 'solid 2px red';
-    status = false
-   }
-   if (reflexes == 0) {
-    playerreflexes.nextElementSibling.style.display = "block"
-    playerreflexes.nextElementSibling.style.color = "red"
-    playerreflexes.style.border = 'solid 2px red';
-    status = false
-   }
-   if (speed == 0) {
-    playerspeed.nextElementSibling.style.display = "block"
-    playerspeed.nextElementSibling.style.color = "red"
-    playerspeed.style.border = 'solid 2px red';
-    status = false
-   }
-   if (positioning == 0) {
-    playerpositioning.nextElementSibling.style.display = "block"
-    playerpositioning.nextElementSibling.style.color = "red"
-    playerpositioning.style.border = 'solid 2px red';
-    status = false
-   }
-  
-
-
-
-
-
-    
-
-    if( pos.value === "GK"){
-        console.log(pos.value);
-        
-        newPlayer.name = playernom.value
-        newPlayer.rating  = playerrating.value
-        newPlayer.nationality = playernationalite.value
-        newPlayer.handling = playerhandling.value
-        newPlayer.physical = playerphysical.value
-        newPlayer.club = playerclub.value
-        newPlayer.kicking = playerkicking.value
-        newPlayer.reflexes = playerreflexes.value
-        newPlayer.positioning  = playerpositioning.value
-        newPlayer.speed = playerspeed.value
-        newPlayer.photo = playerphoto.value
-        newPlayer.logo = playerlogo.value
-        newPlayer.flag = playerflag.value
-        newPlayer.position = pos.value
-       
-        
-
-    }
-    else{
-        newPlayer.name = playernom.value
-        newPlayer.rating  = playerrating.value
-        newPlayer.nationality = playernationalite.value
-        newPlayer.pace = playerpace.value
-        newPlayer.physical = playerphysical.value
-        newPlayer.club = playerclub.value
-        newPlayer.dribbling = playerdriblling.value
-        newPlayer.defending = playerdefending.value
-        newPlayer.passing = playerpassing.value
-        newPlayer.shooting = playershooting.value
-        newPlayer.photo = playerphoto.value
-        newPlayer.logo = playerlogo.value
-        newPlayer.flag = playerflag.value
-        newPlayer.position = pos.value
-
-    }
-   
-
-
-    if (status) {
-        data.players =  data.players.map(playr =>{
-            if(playr.name == editedPlayer) {
-                return newPlayer
-            }
-            else{
-                return playr
-            }
-        })
-        afficherData(data)
-        document.getElementById("").style.display = "none"
-        document.getElementById("").style.display = "block"
-    }
-})
-    
-
-
-   
-
-
-
-
-
-
-
-
-
 
 
 
